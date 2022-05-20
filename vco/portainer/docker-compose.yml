@@ -6,7 +6,7 @@ services:
     image: portainer/portainer-ce
     restart: unless-stopped
     security_opt:
-      - no-new-privileges: true
+      - no-new-privileges:true
     volumes:
       - portainer_data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
