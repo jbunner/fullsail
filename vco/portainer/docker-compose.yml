@@ -4,13 +4,16 @@ services:
   portainer:
     container_name: portainer
     image: portainer/portainer-ce
-    restart: always
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges: true
     volumes:
       - portainer_data:/data
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
     ports:
       - 9443:9443
 
 volumes:
-  portainer_data
-  
+  portainer_data:
+
